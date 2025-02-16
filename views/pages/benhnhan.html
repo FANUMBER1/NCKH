@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+    {% include "common/css.html" %}
+    <script src="https://cdn.socket.io/4.0.1/socket.io.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="js">
+    <!-- Header -->
+    {% include "common/header.html" %}
+    <!--/ End Header -->
+
+    <!-- Start Section -->
+    <section class="shop single section">
+        <div class="container">
+            <div class="row m-3">
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-lg-7 col-7 border border-right-dark">
+                            <div class="row p-3">
+                                <div class="col-lg-3">
+                                    <img class="default-img" src="https://via.placeholder.com/550x750">
+                                </div>
+                                <div class="col-lg-9">
+                                    <canvas id="ekgChart" width="20px" height="10px"></canvas>
+                                </div>
+                            </div>
+                            <div class="row p-3">
+                                <p>Nhịp Tim: <span id="heartRate">0 bpm</span></p>
+                                <p class="ml-4">SpO2: <span id="spo2">0 %</span></p>
+                                <p id="alert" class="ml-4" style="color: red; display: none;">Cảnh báo</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Thông tin bệnh nhân -->
+                        <div class="col-lg-5 col-5 border border-right-dark">
+                            <div class="row mt-4 justify-content-center">
+                                <h5>Thông tin bệnh nhân</h5>
+                            </div>
+                            <div class="total-amount">
+                                <div class="row p-3">
+                                    <h6 class="col-5 p-2">Họ tên:</h6><p class="col-7 p-2">Nguyễn Văn A</p>
+                                    <h6 class="col-5 p-2">Địa chỉ:</h6><p class="col-7 p-2">Hà Nội</p>
+                                    <h6 class="col-5 p-2">Số điện thoại:</h6><p class="col-7 p-2">0987654321</p>
+                                    <h6 class="col-5 p-2">Người Phụ Trách:</h6><p class="col-7 p-2">Bác sĩ B</p>
+                                    <h6 class="col-5 p-2">Tình Trạng:</h6><p class="col-7 p-2">Ổn định</p>
+                                    <h6 class="col-5 p-2">Phòng:</h6><p class="col-7 p-2">P202</p>
+                                    <h6 class="col-5 p-2">Ngày Nhập Viện:</h6><p class="col-7 p-2">12/02/2025</p>
+                                    <h6 class="col-5 p-2">Người Nhà:</h6><p class="col-7 p-2">Nguyễn Văn B</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--/ End Section -->
+
+    <script>
+        // Kết nối Socket.IO với Flask
+        const socket = io("http://localhost:5000");
+
+        socket.on("connect", () => {
+            console.log("Connected to Flask-SocketIO");
+        });
+
+        socket.on("clientData", (data) => {
+            console.log("Received data:", data);
+            const [heartRate, spo2] = data.split(":").map(Number);
+
+            document.getElementById("heartRate").textContent = `${heartRate} bpm`;
+            document.getElementById("spo2").textContent = `${spo2} %`;
+
+            // Cảnh báo nếu dữ liệu bất thường
+            const alertMsg = document.getElementById("alert");
+            if (heartRate < 50) {
+                alertMsg.style.display = "block";
+                alertMsg.textContent = "Nhịp tim quá thấp!";
+            } else if (heartRate > 100 && spo2 < 94) {
+                alertMsg.style.display = "block";
+                alertMsg.textContent = "Cảnh báo: Huyết áp cao!";
+            } else {
+                alertMsg.style.display = "none";
+            }
+
+            // Cập nhật biểu đồ
+            updateEKGChart(heartRate, new Date().toLocaleTimeString());
+        });
+
+        // Cấu hình biểu đồ EKG
+        const ctx = document.getElementById('ekgChart').getContext('2d');
+        const ekgChartData = {
+            labels: [],
+            datasets: [{
+                label: 'Nhịp tim',
+                data: [],
+                borderColor: 'rgb(0, 255, 0)',
+                borderWidth: 2,
+                pointRadius: 0,
+                tension: 0.4,   
+            }]
+        };
+
+        const ekgChart = new Chart(ctx, {
+            type: 'line',
+            data: ekgChartData,
+            options: {
+                responsive: true,
+                animation: { duration: 0 },
+                scales: {
+                    x: { display: false },
+                    y: {
+                        min: 40, 
+                        max: 140,
+                        beginAtZero: false,
+                        grid: { color: 'rgba(255, 255, 255, 0.1)' },
+                        ticks: { display: false }
+                    }
+                },
+                plugins: { legend: { display: false } }
+            }
+        });
+
+        function updateEKGChart(heartRate, time) {
+            if (ekgChartData.labels.length > 30) {
+                ekgChartData.labels.shift();
+                ekgChartData.datasets[0].data.shift();
+            }
+            ekgChartData.labels.push(time);
+            ekgChartData.datasets[0].data.push(heartRate);
+            ekgChart.update();
+        }
+    </script>
+
+    {% include "common/js.html" %}
+</body>
+</html>

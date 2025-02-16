@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+	{%include "common/css.html"%}
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="js">
+	<!-- Header -->
+	{%include "common/header.html"%}
+	<!--/ End Header -->
+	
+	<!-- Start Product Area -->
+    <div class="product-area section">
+            <div class="container">
+				<div class="row">
+					<div class="col-12">
+						<div class="section-title">
+							<h2>TRANG QUẢN LÍ THÔNG TIN</h2>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12">
+						<div class="product-info">
+							<div class="nav-main">
+								<!-- Tab Nav -->
+								<ul class="nav nav-tabs" id="myTab" role="tablist">
+									<li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#rom1" role="tab">Loại Bệnh</a></li>
+									<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#rom2" role="tab">Phòng bệnh</a></li>
+									<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#rom3" role="tab">Khoa </a></li>
+									<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#rom4" role="tab">Bác sĩ</a></li>
+									<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#rom5" role="tab">Bệnh Án</a></li>
+								</ul>
+								<!--/ End Tab Nav -->
+							</div>
+							<div class="tab-content" id="myTabContent" style="margin-top: 20px;">
+								<!-- Start Single Tab -->
+								<div class="tab-pane fade show active" id="rom1" role="tabpanel">
+									<div class="tab-single">
+										<div class="row">
+											<div class="col-12">
+												<!-- Shopping Summery -->
+												<div class="table-wrapper">
+													<form class="form" method="post" action="/sick">
+														<td class="product-des" data-title="Description"><input type="text" placeholder="tên" name="name" required="required"></td>														
+														<td class="nav-item" data-title="Price"><button class="btn" type="submit">Thêm</button></td>
+													</form>
+
+													<table class="table shopping-summery">
+														<thead>
+															<tr class="main-hading">
+																<th class="text-center">STT</th>
+																<th class="text-center">Tên Bệnh Lý</th>
+																<th class="text-center">Số lượng bệnh nhân</th>
+																<th class="text-center">Chi Tiết</th>
+															</tr>
+														</thead>
+														<tbody>
+															{% for sicks in sick %}
+															<tr>
+																<td class="text-center"><span>{{ loop.index }}</span></td>
+																<td class="text-center" data-title="Description"><p class="product-des">{{ sicks.name }}</p></td>														
+																<td class="text-center" data-title="Description"><p class="product-des">23</p></td>
+																<td class="text-center" data-title="Price"><a href="">Chi Tiết</a></td>
+															</tr>
+															{% endfor %}
+														</tbody>
+													</table>
+												</div>
+												<!--/ End Shopping Summery -->
+											</div>			
+										</div>
+									</div>
+								</div>
+								<!--/ End Single Tab -->
+								<!-- Start Single Tab -->
+								<div class="tab-pane fade show " id="rom2" role="tabpanel">
+									<div class="tab-single">
+										<div class="row">
+											<div class="col-12">
+												<!-- Shopping Summery -->
+												<div class="table-wrapper">
+													<form class="form" method="post" action="/room">
+														<td class="product-des" data-title="Description"><input type="text" placeholder="tên" name="name" required="required"></td>														
+														<td class="nav-item" data-title="Price"><button class="btn" type="submit">Thêm</button></td>
+													</form>
+
+													<table class="table shopping-summery">
+														<thead>
+															<tr class="main-hading">
+																<th class="text-center">STT</th>
+																<th class="text-center">Tên Bệnh Lý</th>
+																<th class="text-center">Số lượng bệnh nhân</th>
+																<th class="text-center">Chi Tiết</th>
+															</tr>
+														</thead>
+														<tbody>
+															{% for sicks in sick %}
+															<tr>
+																<td class="text-center"><span>{{ loop.index }}</span></td>
+																<td class="text-center" data-title="Description"><p class="product-des">{{ sicks.name }}</p></td>														
+																<td class="text-center" data-title="Description"><p class="product-des">23</p></td>
+																<td class="text-center" data-title="Price"><a href="">Chi Tiết</a></td>
+															</tr>
+															{% endfor %}
+														</tbody>
+													</table>
+												</div>
+												<!--/ End Shopping Summery -->
+											</div>			
+										</div>
+									</div>
+								</div>
+								<!--/ End Single Tab -->
+								<!-- Start Single Tab -->
+								<div class="tab-pane fade show" id="rom3" role="tabpanel">
+									<div class="tab-single">
+										<div class="row">
+											<div class="col-12">
+												<!-- Shopping Summery -->
+												<div class="table-wrapper">
+													<form class="form" method="post" action="/department">
+														<td class="product-des" data-title="Description"><input type="text" placeholder="tên" name="name" required="required"></td>														
+														<td class="nav-item" data-title="Price"><button class="btn" type="submit">Thêm</button></td>
+													</form>
+
+													<table class="table shopping-summery">
+														<thead>
+															<tr class="main-hading">
+																<th class="text-center">STT</th>
+																<th class="text-center">Tên Khoa</th>
+																<th class="text-center">Số lượng bác sĩ</th>
+																<th class="text-center">Số lượng giường</th>
+																<th class="text-center">Chi Tiết</th>
+															</tr>
+														</thead>
+														<tbody>
+															{% for departments in khoa %}
+															<tr>
+																<td class="text-center"><span>{{ loop.index }}</span></td>
+																<td class="text-center" data-title="Description"><p class="product-des">{{ departments.name }}</p></td>														
+																<td class="text-center" data-title="Description"><p class="product-des">{{ departments.doctors | length}}</p></td>
+																<td class="text-center" data-title="Description"><p class="product-des">{{ departments.rooms | length }}</p></td>
+																<td class="text-center" data-title="Price"><a href="">Chi Tiết</a></td>
+															</tr>
+															{% endfor %}
+														</tbody>
+													</table>
+												</div>
+												<!--/ End Shopping Summery -->
+											</div>			
+										</div>
+									</div>
+								</div>
+								<!--/ End Single Tab -->
+								<!-- Start Single Tab -->
+								<div class="tab-pane fade show" id="rom4" role="tabpanel">
+									<div class="tab-single">
+										<div class="row">
+											<div class="col-12">
+												<!-- Shopping Summery -->
+												<div class="table-wrapper">
+													<form class="form" method="post" action="/doctor">
+														<td class="product-des" data-title="Description"><input type="text" placeholder="tên" name="name" required="required"></td>	
+														<td class="product-des" data-title="Description"><input type="text" placeholder="điện thoại" name="phone" required="required"></td>														
+														<td class="product-des" data-title="Description"><input type="text" placeholder="chức vụ" name="position" required="required"></td>														
+														<td class="product-des" data-title="Description">                                                    
+														<select class="product-des" name="department" >
+															{% for departments in khoa %}
+															<option class="product-des" value="{{departments.id}}">{{departments.name}}</option>
+															{%endfor%}
+														</select>
+	                                                    </td>														
+														<td class="nav-item" data-title="Price"><button class="btn" type="submit">Thêm</button></td>
+													</form>
+
+													<table class="table shopping-summery">
+														<thead>
+															<tr class="main-hading">
+																<th class="text-center">STT</th>
+																<th class="text-center">Họ và tên</th>
+																<th class="text-center">Số điện thoại</th>
+																<th class="text-center">Chức vụ</th>
+																<th class="text-center">Khoa</th>
+															</tr>
+														</thead>
+														<tbody>
+															{% for doctors in doctor %}
+															<tr>
+																<td class="text-center"><span>{{ loop.index }}</span></td>
+																<td class="text-center" data-title="Description"><p class="product-des">{{ doctors.name }}</p></td>														
+																<td class="text-center" data-title="Description"><p class="product-des">{{ doctors.phone}}</p></td>
+																<td class="text-center" data-title="Description"><p class="product-des">{{ doctors.position}}</p></td>
+																<td class="text-center" data-title="Description"><p class="product-des">{{ doctors.department.name}}</p></td>
+															</tr>
+															{% endfor %}
+														</tbody>
+													</table>
+												</div>
+												<!--/ End Shopping Summery -->
+											</div>			
+										</div>
+									</div>
+								</div>
+								<!--/ End Single Tab -->
+								<!-- Start Single Tab -->
+								<div class="tab-pane fade show " id="rom5" role="tabpanel">
+									<div class="tab-single">
+										<div class="row">
+											<div class="col-12">
+												<!-- Shopping Summery -->
+												<div class="table-wrapper">
+													<table class="table shopping-summery">
+														<thead>
+															<tr class="main-hading">
+																<th>ID</th>
+																<th>Họ và Tên</th>
+																<th class="text-center">Tên Bệnh</th>
+																<th class="text-center">Địa chỉ</th>
+																<th class="text-center">Số điện thoại</th>
+																<th class="text-center">Người Phụ Trách</th>
+																<th>Chi Tiết</th>
+															</tr>
+														</thead>
+														<tbody>
+															<tr>
+																<td><span>92324844</span></td>
+																<td class="product-des" data-title="Description"><p class="product-des">Nguyen Van A</p></td>														
+																<td class="product-des" data-title="Description"><p class="product-des">Thanh Pho Da Nang</p></td>
+																<td class="price" data-title="Price"><span>012345676</span></td>
+																<td class="price" data-title="Price"><span>dau ruot thua</span></td>
+																<td class="total-amount" data-title="Total"><span>Nguyen Van B </span></td>
+																<td class="price" data-title="Price"><a href="">Chi Tiết</a></td>
+															</tr>
+															<tr>
+																<td><span>92324844</span></td>
+																<td class="product-des" data-title="Description"><p class="product-des">Nguyen Van A</p></td>														
+																<td class="product-des" data-title="Description"><p class="product-des">Thanh Pho Da Nang</p></td>
+																<td class="price" data-title="Price"><span>012345676</span></td>
+																<td class="price" data-title="Price"><span>dau ruot thua</span></td>
+																<td class="total-amount" data-title="Total"><span>Nguyen Van B </span></td>
+																<td class="price" data-title="Price"><a href="">Chi Tiết</a></td>
+															</tr>
+															<tr>
+																<td><span>92324844</span></td>
+																<td class="product-des" data-title="Description"><p class="product-des">Nguyen Van A</p></td>														
+																<td class="product-des" data-title="Description"><p class="product-des">Thanh Pho Da Nang</p></td>
+																<td class="price" data-title="Price"><span>012345676</span></td>
+																<td class="price" data-title="Price"><span>dau ruot thua</span></td>
+																<td class="total-amount" data-title="Total"><span>Nguyen Van B </span></td>
+																<td class="price" data-title="Price"><a href="">Chi Tiết</a></td>
+															</tr>
+															<tr>
+																<td><span>92324844</span></td>
+																<td class="product-des" data-title="Description"><p class="product-des">Nguyen Van A</p></td>														
+																<td class="product-des" data-title="Description"><p class="product-des">Thanh Pho Da Nang</p></td>
+																<td class="price" data-title="Price"><span>012345676</span></td>
+																<td class="price" data-title="Price"><span>dau ruot thua</span></td>
+																<td class="total-amount" data-title="Total"><span>Nguyen Van B </span></td>
+																<td class="price" data-title="Price"><a href="">Chi Tiết</a></td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+												<!--/ End Shopping Summery -->
+											</div>
+										</div>
+									</div>
+								</div>
+								<!--/ End Single Tab -->
+								<!-- Start Single Tab -->
+								<!--/ End Single Tab -->
+							</div>
+						</div>
+					</div>
+				</div>
+            </div>
+    </div>
+	<!-- Modal -->
+		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="ti-close" aria-hidden="true"></span></button>
+				</div>
+				<div class="modal-body">
+					<div class="row no-gutters">
+						<div class="col-lg-6 offset-lg-3 col-12">
+							<h4 style="margin-top:100px;font-size:14px; font-weight:500; color:#F7941D; display:block; margin-bottom:5px;">Eshop Free Lite</h4>
+							<h3 style="font-size:30px;color:#333;">Currently You are using free lite Version of Eshop.<h3>
+							<p style="display:block; margin-top:20px; color:#888; font-size:14px; font-weight:400;">Please, purchase full version of the template to get all pages, features and commercial license</p>
+							<div class="button" style="margin-top:30px;">
+								<a href="https://wpthemesgrid.com/downloads/eshop-ecommerce-html5-template/" target="_blank" class="btn" style="color:#fff;">Buy Now!</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+</div>
+
+    <!-- Modal end -->
+	{%include "common/footer.html"%}
+	{%include "common/js.html"%}
+	<!-- Jquery -->
+    
+</body>
+</html>

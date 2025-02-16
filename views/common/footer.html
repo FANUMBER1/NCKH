@@ -1,0 +1,233 @@
+<div class="modal fade" id="form" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+                <h5 class="modal-title" style="text-align: center; padding-top: 30px;" >Thông tin bệnh nhân</h5>
+            <div class="modal-body">
+                <section class="shop checkout section">
+                    <div class="container">
+                        <div class="row"> 
+                            <div class="col-lg-12 col-12">
+                                <div class="checkout-form">
+                                    <!-- Form -->
+                                    <form class="form" method="post" action="/benhnhan">
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-6 col-12">
+                                                <div class="form-group">
+                                                    <label>Tên bệnh nhân <span>*</span></label>
+                                                    <input type="text" name="name" placeholder="" required="required">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-12">
+                                                <div class="form-group">
+                                                    <label>Số điện thoại<span>*</span></label>
+                                                    <input type="text" name="phone" placeholder="" required="required">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-12">
+                                                <div class="form-group">
+                                                    <label>Địa chỉ<span>*</span></label>
+                                                    <input type="text" name="address" placeholder="" required="required">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-12">
+                                                <div class="form-group">
+                                                    <label>Công việc<span>*</span></label>
+                                                    <input type="text" name="job" placeholder="" required="required">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-12">
+                                                <div class="form-group">
+                                                    <label>Giới tính</label><span>*</span></label>
+                                                    <select name="sex" >
+                                                        <option value="divition" selected="selected">Không</option>
+                                                        <option>Nam</option>
+                                                        <option>Nữ</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-12">
+                                                <div class="form-group">
+                                                    <label>Người Thân<span>*</span></label>
+                                                    <input type="text" name="relative" placeholder="" required="required">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-12">
+                                                <div class="form-group">
+                                                    <label>Khoa<span>*</span></label>
+                                                    <select name="department" id="company">
+                                                        <option value="company" selected="selected">Microsoft</option>
+                                                        <option>Apple</option>
+                                                        <option>Xaiomi</option>
+                                                        <option>Huawer</option>
+                                                        <option>Wpthemesgrid</option>
+                                                        <option>Samsung</option>
+                                                        <option>Motorola</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-12">
+                                                <div class="form-group">
+                                                    <label>Tên bệnh<span>*</span></label>
+                                                    <select name="sick" id="company">
+                                                        <option value="company" selected="selected">Microsoft</option>
+                                                        <option>Apple</option>
+                                                        <option>Xaiomi</option>
+                                                        <option>Huawer</option>
+                                                        <option>Wpthemesgrid</option>
+                                                        <option>Samsung</option>
+                                                        <option>Motorola</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-12">
+                                                <div class="form-group">
+                                                    <label>Người Phụ Trách<span>*</span></label>
+                                                    <select name="doctor" id="company">
+                                                        <option value="company" selected="selected">Microsoft</option>
+                                                        <option>Apple</option>
+                                                        <option>Xaiomi</option>
+                                                        <option>Huawer</option>
+                                                        <option>Wpthemesgrid</option>
+                                                        <option>Samsung</option>
+                                                        <option>Motorola</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-12">
+                                                <div class="form-group">
+                                                    <label>Phòng bệnh<span>*</span></label>
+                                                    <select name="room" id="company">
+                                                        <option value="company" selected="selected">Microsoft</option>
+                                                        <option>Apple</option>
+                                                        <option>Xaiomi</option>
+                                                        <option>Huawer</option>
+                                                        <option>Wpthemesgrid</option>
+                                                        <option>Samsung</option>
+                                                        <option>Motorola</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-12">
+                                                <div class="form-group">
+                                                    <label>Giường bệnh<span>*</span></label>
+                                                    <select name="bed" id="company">
+                                                        <option value="company" selected="selected">Microsoft</option>
+                                                        <option>Apple</option>
+                                                        <option>Xaiomi</option>
+                                                        <option>Huawer</option>
+                                                        <option>Wpthemesgrid</option>
+                                                        <option>Samsung</option>
+                                                        <option>Motorola</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group create-account">
+                                                    <button type="submit" class="btn" style="color:#fff;">THÊM</button>
+                                                    <button target="_blank" class="btn" style="color:#fff;"><a href="/" >THOÁT</a></button>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <!--/ End Form -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="footer">
+    <!-- Footer Top -->
+    <div class="footer-top section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 col-md-6 col-12">
+                    <!-- Single Widget -->
+                    <div class="single-footer about">
+                        <div class="logo">
+                            <a href="index.html"><img src="images/logo2.png" alt="#"></a>
+                        </div>
+                        <p class="text">Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue,  magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.</p>
+                        <p class="call">Got Question? Call us 24/7<span><a href="tel:123456789">+0123 456 789</a></span></p>
+                    </div>
+                    <!-- End Single Widget -->
+                </div>
+                <div class="col-lg-2 col-md-6 col-12">
+                    <!-- Single Widget -->
+                    <div class="single-footer links">
+                        <h4>Information</h4>
+                        <ul>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Faq</a></li>
+                            <li><a href="#">Terms & Conditions</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="#">Help</a></li>
+                        </ul>
+                    </div>
+                    <!-- End Single Widget -->
+                </div>
+                <div class="col-lg-2 col-md-6 col-12">
+                    <!-- Single Widget -->
+                    <div class="single-footer links">
+                        <h4>Customer Service</h4>
+                        <ul>
+                            <li><a href="#">Payment Methods</a></li>
+                            <li><a href="#">Money-back</a></li>
+                            <li><a href="#">Returns</a></li>
+                            <li><a href="#">Shipping</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                    <!-- End Single Widget -->
+                </div>
+                <div class="col-lg-3 col-md-6 col-12">
+                    <!-- Single Widget -->
+                    <div class="single-footer social">
+                        <h4>Get In Tuch</h4>
+                        <!-- Single Widget -->
+                        <div class="contact">
+                            <ul>
+                                <li>NO. 342 - London Oxford Street.</li>
+                                <li>012 United Kingdom.</li>
+                                <li>info@eshop.com</li>
+                                <li>+032 3456 7890</li>
+                            </ul>
+                        </div>
+                        <!-- End Single Widget -->
+                        <ul>
+                            <li><a href="#"><i class="ti-facebook"></i></a></li>
+                            <li><a href="#"><i class="ti-twitter"></i></a></li>
+                            <li><a href="#"><i class="ti-flickr"></i></a></li>
+                            <li><a href="#"><i class="ti-instagram"></i></a></li>
+                        </ul>
+                    </div>
+                    <!-- End Single Widget -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Footer Top -->
+    <div class="copyright">
+        <div class="container">
+            <div class="inner">
+                <div class="row">
+                    <div class="col-lg-6 col-12">
+                        <div class="left">
+                            <p>Copyright © 2020 <a href="http://www.wpthemesgrid.com" target="_blank">Wpthemesgrid</a>  -  All Rights Reserved.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-12">
+                        <div class="right">
+                            <img src="images/payments.png" alt="#">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
