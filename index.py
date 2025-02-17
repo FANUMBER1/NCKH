@@ -29,7 +29,7 @@ def add_health_data(heart_rate: float, spo2: float, user_id: int):
     """Thêm dữ liệu sức khỏe vào database."""
     try:
         with SessionLocal() as db:
-            new_record = HealthData(heartRate=heart_rate, spo2=spo2, user_id=user_id)
+            new_record = HealthData(heartRate=heart_rate, spo2=spo2, user_id=1)
             db.add(new_record)
             db.commit()
             db.refresh(new_record)
@@ -58,4 +58,4 @@ def on_connect():
     socket.emit("clientData", "hi")
 
 if __name__ == "__main__":
-    socket.run(app, host="localhost", port=5000, debug=True)
+    app.run(host='localhost', port=5000, debug=True)
