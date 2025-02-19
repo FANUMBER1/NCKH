@@ -166,67 +166,7 @@
 	</div>	
 	<!-- Modal -->
     <!-- Modal end -->
-	<script>
-		// Khởi tạo WebSocket
-		const ws = new WebSocket('ws://localhost:2222');
-	
-		let lastUpdateTime = Date.now(); // Thời gian nhận dữ liệu cuối cùng
-		const TIMEOUT_MS = 5000; // Thời gian timeout (5 giây)
-	
-		// Phần tử "Giường 1 Phòng 1"
-		const bedElement = document.getElementById("1.1");
-	
-		// Hàm đặt màu giường về đen khi không có dữ liệu
-		const resetBedColor = () => {
-			if (bedElement) {
-				bedElement.style.backgroundColor = "black";
-				bedElement.style.color = "white";
-			}
-		};
-	
-		// Cập nhật dữ liệu khi nhận được từ WebSocket
-		ws.onmessage = (event) => {
-			const data = JSON.parse(event.data);
-	
-			// Cập nhật thời gian nhận dữ liệu cuối cùng
-			lastUpdateTime = Date.now();
-	
-			// Kiểm tra và thay đổi màu sắc giường
-			if (data.heartRate < 60 || (data.heartRate > 100 && data.spo2 < 94)) {
-				// Màu đỏ nếu không đạt yêu cầu
-				if (bedElement) {
-					bedElement.style.backgroundColor = "red";
-					bedElement.style.color = "white";
-				}
-			} else {
-				// Màu xanh nếu đạt yêu cầu
-				if (bedElement) {
-					bedElement.style.backgroundColor = "green";
-					bedElement.style.color = "white";
-				}
-			}
-		};
-	
-		// Kiểm tra trạng thái timeout (không nhận dữ liệu trong khoảng thời gian nhất định)
-		setInterval(() => {
-			const currentTime = Date.now();
-			if (currentTime - lastUpdateTime > TIMEOUT_MS) {
-				resetBedColor(); // Đặt lại màu đen nếu timeout
-			}
-		}, 1000); // Kiểm tra mỗi giây
-	
-		// Xử lý lỗi WebSocket
-		ws.onerror = (error) => {
-			console.error("WebSocket error:", error);
-		};
-	
-		// Đóng kết nối WebSocket
-		ws.onclose = () => {
-			console.log("WebSocket connection closed.");
-			resetBedColor(); // Đặt lại màu đen nếu mất kết nối
-		};
-	</script>
-	
+    {%include "common/footer.html"%}
 	{%include "common/js.html"%}
 	<!-- Jquery -->
     

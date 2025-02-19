@@ -7,7 +7,7 @@ def khoa():
     data1 = get_all_sick()
     data2 = get_all_khoa()
     data3 = get_all_doctor()
-    return render_template('pages/maneger.html',sick=data1, khoa=data2, doctor = data3)
+    return render_template('pages/maneger.html',sicks=data1, khoa=data2, doctor = data3)
 
 def add_khoa():
     name = request.form.get('name')

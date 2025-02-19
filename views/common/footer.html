@@ -39,9 +39,9 @@
                                                 <div class="form-group">
                                                     <label>Giới tính</label><span>*</span></label>
                                                     <select name="sex" >
-                                                        <option value="divition" selected="selected">Không</option>
-                                                        <option>Nam</option>
-                                                        <option>Nữ</option>
+                                                        <option value="0"   selected="selected">Không</option>
+                                                        <option value="1">Nam</option>
+                                                        <option value="2">Nữ</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -55,13 +55,9 @@
                                                 <div class="form-group">
                                                     <label>Khoa<span>*</span></label>
                                                     <select name="department" id="company">
-                                                        <option value="company" selected="selected">Microsoft</option>
-                                                        <option>Apple</option>
-                                                        <option>Xaiomi</option>
-                                                        <option>Huawer</option>
-                                                        <option>Wpthemesgrid</option>
-                                                        <option>Samsung</option>
-                                                        <option>Motorola</option>
+                                                        {%for khoa in khoa%}
+                                                        <option value="{{khoa.id}}">{{khoa.name}}</option>
+                                                        {%endfor%}
                                                     </select>
                                                 </div>
                                             </div>
@@ -69,13 +65,9 @@
                                                 <div class="form-group">
                                                     <label>Tên bệnh<span>*</span></label>
                                                     <select name="sick" id="company">
-                                                        <option value="company" selected="selected">Microsoft</option>
-                                                        <option>Apple</option>
-                                                        <option>Xaiomi</option>
-                                                        <option>Huawer</option>
-                                                        <option>Wpthemesgrid</option>
-                                                        <option>Samsung</option>
-                                                        <option>Motorola</option>
+                                                        {%for sicks in sicks%}
+                                                        <option value="{{sicks.id}}">{{sicks.name}}</option>
+                                                        {%endfor%}
                                                     </select>
                                                 </div>
                                             </div>
@@ -83,13 +75,9 @@
                                                 <div class="form-group">
                                                     <label>Người Phụ Trách<span>*</span></label>
                                                     <select name="doctor" id="company">
-                                                        <option value="company" selected="selected">Microsoft</option>
-                                                        <option>Apple</option>
-                                                        <option>Xaiomi</option>
-                                                        <option>Huawer</option>
-                                                        <option>Wpthemesgrid</option>
-                                                        <option>Samsung</option>
-                                                        <option>Motorola</option>
+                                                        {%for doctor in doctor%}
+                                                        <option value="{{doctor.id}}">{{doctor.name}}</option>
+                                                        {%endfor%}
                                                     </select>
                                                 </div>
                                             </div>
@@ -97,13 +85,9 @@
                                                 <div class="form-group">
                                                     <label>Phòng bệnh<span>*</span></label>
                                                     <select name="room" id="company">
-                                                        <option value="company" selected="selected">Microsoft</option>
-                                                        <option>Apple</option>
-                                                        <option>Xaiomi</option>
-                                                        <option>Huawer</option>
-                                                        <option>Wpthemesgrid</option>
-                                                        <option>Samsung</option>
-                                                        <option>Motorola</option>
+                                                        {%for doctor in doctor%}
+                                                        <option value="{{doctor.id}}">{{doctor.name}}</option>
+                                                        {%endfor%}
                                                     </select>
                                                 </div>
                                             </div>

@@ -56,10 +56,10 @@
 															</tr>
 														</thead>
 														<tbody>
-															{% for sicks in sick %}
+															{% for sick in sicks %}
 															<tr>
 																<td class="text-center"><span>{{ loop.index }}</span></td>
-																<td class="text-center" data-title="Description"><p class="product-des">{{ sicks.name }}</p></td>														
+																<td class="text-center" data-title="Description"><p class="product-des">{{ sick.name }}</p></td>														
 																<td class="text-center" data-title="Description"><p class="product-des">23</p></td>
 																<td class="text-center" data-title="Price"><a href="">Chi Tiết</a></td>
 															</tr>
@@ -81,7 +81,15 @@
 												<!-- Shopping Summery -->
 												<div class="table-wrapper">
 													<form class="form" method="post" action="/room">
-														<td class="product-des" data-title="Description"><input type="text" placeholder="tên" name="name" required="required"></td>														
+														<td class="product-des" data-title="Description"><input type="text" placeholder="tên" name="name" required="required"></td>			
+														<td class="product-des" data-title="Description"><input type="text" placeholder="lưu ý" name="note" required="required"></td>	
+														<td class="product-des" data-title="Description">                                                    
+															<select class="product-des" name="department" >
+																{% for departments in khoa %}
+																<option class="product-des" value="{{departments.id}}">{{departments.name}}</option>
+																{%endfor%}
+															</select>
+															</td>																																							
 														<td class="nav-item" data-title="Price"><button class="btn" type="submit">Thêm</button></td>
 													</form>
 
@@ -89,18 +97,18 @@
 														<thead>
 															<tr class="main-hading">
 																<th class="text-center">STT</th>
-																<th class="text-center">Tên Bệnh Lý</th>
+																<th class="text-center">Số phòng</th>
 																<th class="text-center">Số lượng bệnh nhân</th>
-																<th class="text-center">Chi Tiết</th>
+																<th class="text-center">Active</th>
 															</tr>
 														</thead>
 														<tbody>
-															{% for sicks in sick %}
+															{% for room in room %}
 															<tr>
 																<td class="text-center"><span>{{ loop.index }}</span></td>
-																<td class="text-center" data-title="Description"><p class="product-des">{{ sicks.name }}</p></td>														
-																<td class="text-center" data-title="Description"><p class="product-des">23</p></td>
-																<td class="text-center" data-title="Price"><a href="">Chi Tiết</a></td>
+																<td class="text-center" data-title="Description"><p class="product-des">{{ room.room_number}}</p></td>														
+																<td class="text-center" data-title="Description"><p class="product-des">{{room.users | length}}</p></td>
+																<td class="text-center" data-title="Price"><a href="/room/delete/{{room.id}}">Xóa</a></td>
 															</tr>
 															{% endfor %}
 														</tbody>
@@ -130,7 +138,7 @@
 																<th class="text-center">STT</th>
 																<th class="text-center">Tên Khoa</th>
 																<th class="text-center">Số lượng bác sĩ</th>
-																<th class="text-center">Số lượng giường</th>
+																<th class="text-center">Số lượng phòng</th>
 																<th class="text-center">Chi Tiết</th>
 															</tr>
 														</thead>

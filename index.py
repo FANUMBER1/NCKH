@@ -8,16 +8,17 @@ from router.quanli1.phongbenh import phongbenhs
 from router.quanli1.benhnhan import benhnhans
 from database import SessionLocal
 from models import HealthData
-
 import logging
 
-app = Flask(__name__, template_folder="views", static_folder="assets")
-app.config["SECRET_KEY"] = "test123"
-app.config["DEBUG"] = True
-socket = SocketIO(app, cors_allowed_origins="*")
 
-log = logging.getLogger("werkzeug")
-log.disabled = True
+
+app = Flask(__name__, template_folder="views", static_folder="assets")
+# app.config["SECRET_KEY"] = "test123"
+# app.config["DEBUG"] = True
+# socket = SocketIO(app, cors_allowed_origins="*")
+
+# log = logging.getLogger("werkzeug")
+# log.disabled = True
 
 app.register_blueprint(homes)
 app.register_blueprint(hosos)
@@ -37,25 +38,25 @@ def add_health_data(heart_rate: float, spo2: float, user_id: int):
     except Exception as e:
         print(f"Error inserting health data: {e}")
 
-@cross_origin()
-@socket.on("data")
-def handle_data(data):
-    print(f"Received data: {data}")
-    try:
-        heart_rate = float(data.get("heart_rate"))
-        spo2 = float(data.get("spo2"))
-        user_id = int(data.get("user_id"))
-        add_health_data(heart_rate, spo2, user_id)
-        socket.emit("clientData", {"status": "success", "message": "Data saved"})
-    except Exception as e:
-        print(f"Error processing data: {e}")
-        socket.emit("clientData", {"status": "error", "message": str(e)})
+# @cross_origin()
+# @socket.on("data")
+# def handle_data(data):
+#     print(f"Received data: {data}")
+#     try:
+#         heart_rate = float(data.get("heart_rate"))
+#         spo2 = float(data.get("spo2"))
+#         user_id = int(data.get("user_id"))
+#         add_health_data(heart_rate, spo2, user_id)
+#         socket.emit("clientData", {"status": "success", "message": "Data saved"})
+#     except Exception as e:
+#         print(f"Error processing data: {e}")
+#         socket.emit("clientData", {"status": "error", "message": str(e)})
 
-@cross_origin()
-@socket.on("connect")
-def on_connect():
-    print("Client connected")
-    socket.emit("clientData", "hi")
+# @cross_origin()
+# @socket.on("connect")
+# def on_connect():
+#     print("Client connected")
+#     socket.emit("clientData", "hi")
 
 if __name__ == "__main__":
-    app.run(host='localhost', port=5000, debug=True)
+    app.run(host='localhost', port=5000, debug=False)
