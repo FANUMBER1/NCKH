@@ -1,6 +1,7 @@
 from database import SessionLocal
 from models import HealthData
 from models import User
+from sqlalchemy.orm import selectinload
 
 def add_user(name_user: str):
     """Thêm user mới vào database."""
@@ -20,3 +21,15 @@ def add_health_data(heart_rate: float, spo2: float, user_id: int):
         db.commit()
         db.refresh(new_record)
         print(f"Inserted Health Data ID: {new_record.id}")
+
+def benhnhan_id(id:int):
+    with SessionLocal() as db:
+        new_record = (db.query(User).filter(User.id == id)
+        .options(
+                selectinload(User.department),
+                selectinload(User.doctor),
+                selectinload(User.room),
+                selectinload(User.sick),
+            )
+        .all())
+        return new_record

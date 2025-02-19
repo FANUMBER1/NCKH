@@ -85,8 +85,8 @@
                                                 <div class="form-group">
                                                     <label>Phòng bệnh<span>*</span></label>
                                                     <select name="room" id="company">
-                                                        {%for doctor in doctor%}
-                                                        <option value="{{doctor.id}}">{{doctor.name}}</option>
+                                                        {%for rooms in room%}
+                                                        <option value="{{rooms.id}}">{{rooms.room_number}}</option>
                                                         {%endfor%}
                                                     </select>
                                                 </div>
@@ -94,15 +94,7 @@
                                             <div class="col-lg-6 col-md-6 col-12">
                                                 <div class="form-group">
                                                     <label>Giường bệnh<span>*</span></label>
-                                                    <select name="bed" id="company">
-                                                        <option value="company" selected="selected">Microsoft</option>
-                                                        <option>Apple</option>
-                                                        <option>Xaiomi</option>
-                                                        <option>Huawer</option>
-                                                        <option>Wpthemesgrid</option>
-                                                        <option>Samsung</option>
-                                                        <option>Motorola</option>
-                                                    </select>
+                                                    <input type="text" name="bed" placeholder="" required="required">
                                                 </div>
                                             </div>
                                             <div class="col-12">

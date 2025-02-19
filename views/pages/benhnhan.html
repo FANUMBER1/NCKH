@@ -39,14 +39,15 @@
                             </div>
                             <div class="total-amount">
                                 <div class="row p-3">
-                                    <h6 class="col-5 p-2">Họ tên:</h6><p class="col-7 p-2">Nguyễn Văn A</p>
-                                    <h6 class="col-5 p-2">Địa chỉ:</h6><p class="col-7 p-2">Hà Nội</p>
-                                    <h6 class="col-5 p-2">Số điện thoại:</h6><p class="col-7 p-2">0987654321</p>
-                                    <h6 class="col-5 p-2">Người Phụ Trách:</h6><p class="col-7 p-2">Bác sĩ B</p>
+                                    {%for users in user%}
+                                    <h6 class="col-5 p-2">Họ tên:</h6><p class="col-7 p-2">{{users.name}}</p>
+                                    <h6 class="col-5 p-2">Địa chỉ:</h6><p class="col-7 p-2">{{users.address}}</p>
+                                    <h6 class="col-5 p-2">Số điện thoại:</h6><p class="col-7 p-2">{{users.phone}}</p>
+                                    <h6 class="col-5 p-2">Người Phụ Trách:</h6><p class="col-7 p-2">{{users.department.name}}</p>
                                     <h6 class="col-5 p-2">Tình Trạng:</h6><p class="col-7 p-2">Ổn định</p>
-                                    <h6 class="col-5 p-2">Phòng:</h6><p class="col-7 p-2">P202</p>
-                                    <h6 class="col-5 p-2">Ngày Nhập Viện:</h6><p class="col-7 p-2">12/02/2025</p>
-                                    <h6 class="col-5 p-2">Người Nhà:</h6><p class="col-7 p-2">Nguyễn Văn B</p>
+                                    <h6 class="col-5 p-2">Phòng:</h6><p class="col-7 p-2">{{users.room.room_number}}</p>
+                                    <h6 class="col-5 p-2">Người Nhà:</h6><p class="col-7 p-2">{{users.relative}}</p>
+                                    {%endfor%}
                                 </div>
                             </div>
                         </div>
